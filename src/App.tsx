@@ -1,5 +1,5 @@
-import { AddIcon, AtSignIcon, CheckIcon } from "@chakra-ui/icons";
-import { Box, Card, CardBody, CardHeader, Heading, Stack, StackDivider, Text, useDisclosure } from "@chakra-ui/react";
+import { AddIcon } from "@chakra-ui/icons";
+import { Card, CardBody, CardHeader, Heading, Stack, StackDivider, Text, useDisclosure } from "@chakra-ui/react";
 import { format } from "date-fns-tz";
 import { Task, TaskProps } from "./components/Task";
 import { Modal } from "./components/Modal";
@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { api } from "./lib/axios";
 import { AxiosError } from "axios";
 import { LineWobble } from "@uiball/loaders";
+import { Header } from "./components/Header";
 
 export function App() {
   const brTimeZone = 'America/Sao_Paulo'
@@ -40,13 +41,7 @@ export function App() {
 
   return (
     <div className="h-[100vh] w-[100vw] px-10 flex flex-col justify-start items-center">
-      <Box className="w-full max-w-[718px] mt-10 flex justify-between">
-        <Box className="flex items-center gap-2">
-          <Heading size={'md'}>To Do App</Heading>
-          <CheckIcon />
-        </Box>
-        <Text><AtSignIcon className="text-sm"/> joaovcostas</Text>
-      </Box>
+      <Header />
 
       <Card shadow='lg' className="w-full max-w-[720px] mt-10 h-fit">
         <CardHeader className="flex items-center justify-between">
