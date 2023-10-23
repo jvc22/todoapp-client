@@ -29,7 +29,7 @@ export function Task({id, name, descr, finished}: TaskProps) {
 
     async function handleCheckTask() {
         try {
-            setIsChecked(!finished)
+            setIsChecked(!isChecked)
 
             await api.put(`/task/${id}`)
         } catch(err) {
