@@ -68,7 +68,7 @@ export function App() {
               ) : (
                 tasks.length !== 0 ? (
                   tasks.map(task => (
-                    <Task key={task.id} id={task.id} name={task.name} descr={task.descr}/>
+                    <Task key={task.id} id={task.id} name={task.name} descr={task.descr} finished={task.finished}/>
                   ))
                 ) : (
                 <Text>No tasks found for today.</Text>

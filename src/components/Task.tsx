@@ -9,9 +9,10 @@ export interface TaskProps {
     id: string;
     name: string;
     descr: string;
+    finished: boolean;
 }
 
-export function Task({id, name, descr}: TaskProps) {
+export function Task({id, name, descr, finished}: TaskProps) {
     async function handleDeleteTask() {
         try {
             setIsLoading(true)
@@ -26,14 +27,27 @@ export function Task({id, name, descr}: TaskProps) {
         }
     }
 
+    async function handleCheckTask() {
+        try {
+            setIsChecked(!finished)
+
+            await api.put(`/task/${id}`)
+        } catch(err) {
+            if(err instanceof AxiosError && err?.response?.data?.message) {
+                console.log(err.response.data.message)
+                return
+            }
+        }
+    }
+
     const [isLoading, setIsLoading] = useState(false)
-    const [isChecked, setIsChecked] = useState(false)
+    const [isChecked, setIsChecked] = useState(finished)
     
     return (
         <Box>
             <Box className="flex items-start justify-between">
                 <Box className="flex items-center gap-2">
-                    <Checkbox onChange={() => {setIsChecked(!isChecked)}}/>
+                    <Checkbox onChange={handleCheckTask}/>
                     <Heading size={"sm"} className={isChecked ? 'line-through' : ''}>{name.toUpperCase()}</Heading>
                 </Box>
 
