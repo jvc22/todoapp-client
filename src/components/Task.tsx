@@ -47,7 +47,7 @@ export function Task({id, name, descr, finished}: TaskProps) {
         <Box>
             <Box className="flex items-start justify-between">
                 <Box className="flex items-center gap-2">
-                    <Checkbox onChange={handleCheckTask}/>
+                    <Checkbox isChecked={finished} onChange={handleCheckTask} />
                     <Heading size={"sm"} className={isChecked ? 'line-through' : ''}>{name.toUpperCase()}</Heading>
                 </Box>
 
