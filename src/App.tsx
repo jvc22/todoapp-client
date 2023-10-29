@@ -10,9 +10,8 @@ import { LineWobble } from "@uiball/loaders";
 import { Header } from "./components/Header";
 
 export function App() {
-  const brTimeZone = 'America/Sao_Paulo'
   const date = new Date()
-  const formattedDate = format(date, "dd MMM. yyyy", { timeZone: brTimeZone })
+  const formattedDate = format(date, "dd MMM. yyyy")
 
   const {isOpen, onOpen, onClose} = useDisclosure()
 
